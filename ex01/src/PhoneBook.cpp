@@ -6,12 +6,12 @@
 /*   By: barjimen <barjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 22:00:52 by barjimen          #+#    #+#             */
-/*   Updated: 2025/07/12 17:01:30 by barjimen         ###   ########.fr       */
+/*   Updated: 2025/07/12 17:50:37 by barjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/PhoneBook.hpp"
-#include <cstdlib>
+#include <stdlib.h>
 
 
 PhoneBook::PhoneBook(/* args */): _nbContacts(0){} //Asi se inicializa a 0
@@ -127,16 +127,17 @@ void PhoneBook::FindContact()
         std::cout << "|" << std::string(9, ' ') << i + 1 << "|" << formatText(_contact[i].getData(0)) << "|" << formatText(_contact[i].getData(1)) << "|" << formatText(_contact[i].getData(2)) << "|" << std::endl;
     }
     std::cout << "|----------|----------|----------|----------|" << std::endl;
-
+    
     std::cout << "Which contact do you want to see information about? Enter the index:" << std::endl;
     std::getline(std::cin, aux);
+    int index = std::atoi(aux.c_str()) - 1;
     if (std::cin.eof() || aux.length() != 1 || aux.find_first_not_of("12345678") != std::string::npos)
         std::cout << "Not valid u stupid >:(" << std::endl;
     else
     {
         for (int x = 0; x < 5; x++)
         {
-            std::cout << list[x] << _contact[std::atoi(aux.c_str())].getData(x) << std::endl;
+            std::cout << list[x] << _contact[index].getData(x) << std::endl;
         }
     }
 }
