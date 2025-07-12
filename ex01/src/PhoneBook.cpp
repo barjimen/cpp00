@@ -6,11 +6,13 @@
 /*   By: barjimen <barjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 22:00:52 by barjimen          #+#    #+#             */
-/*   Updated: 2025/07/12 15:00:49 by barjimen         ###   ########.fr       */
+/*   Updated: 2025/07/12 17:01:30 by barjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/PhoneBook.hpp"
+#include <cstdlib>
+
 
 PhoneBook::PhoneBook(/* args */): _nbContacts(0){} //Asi se inicializa a 0
 PhoneBook::~PhoneBook(){}
@@ -115,7 +117,7 @@ std::string formatText(std::string text)
 
 void PhoneBook::FindContact()
 {
-    
+    std::string list[] = {"NAME: ", "LAST NAME: ", "NICKNAME: ", "PHONE: ", "DARK SECRET: " };
     std::string aux;
     std::cout << "_____________________________________________" << std::endl;
     std::cout << "|     INDEX|    F NAME|    L NAME|  NICKNAME|" << std::endl;
@@ -134,8 +136,7 @@ void PhoneBook::FindContact()
     {
         for (int x = 0; x < 5; x++)
         {
-            _contact[std::atoi(aux.c_str())].getData(x);
-            
+            std::cout << list[x] << _contact[std::atoi(aux.c_str())].getData(x) << std::endl;
         }
     }
 }
